@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">O-Badminton</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="MAPS_API_KEY">AIzaSyAm9RJqll2nayXCFVnTSS-m7P8tZupmFGk</string>
+    <string name="search">Cari</string>
+    <string name="search_hint">Cari</string>
+
+
+    <string-array name="numbers">
+        <item>BNI</item>
+        <item>BRI</item>
+        <item>BCA</item>
+        <item>MANDIRI</item>
+    </string-array>
+
+    <string-array name="hari">
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rabu</item>
+        <item>Kamis</item>
+        <item>Jum\'at</item>
+        <item>Sabtu</item>
+        <item>Minggu</item>
+    </string-array>
+
+    <string-array name="jam">
+        <item>07.00</item>
+        <item>08.00</item>
+        <item>09.00</item>
+        <item>10.00</item>
+        <item>11.00</item>
+        <item>13.00</item>
+        <item>14.00</item>
+        <item>15.00</item>
+        <item>16.00</item>
+        <item>17.00</item>
+        <item>18.00</item>
+        <item>19.00</item>
+        <item>20.00</item>
+        <item>21.00</item>
+        <item>22.00</item>
+        <item>23.00</item>
+    </string-array>
+</resources>

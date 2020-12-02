@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="8dp"
+    tools:context=".fragment.BerandaFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvGreeting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Selamat Datang"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="@color/black_txt_color"/>
+
+        <TextView
+            android:id="@+id/tvMasukDaftar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Klik disini untuk login"
+            android:layout_marginTop="4dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue_400"/>
+
+        <RelativeLayout
+            android:id="@+id/rlSaldo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:background="@color/white"
+            android:padding="8dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ivSaldo"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_coin"/>
+
+            <TextView
+                android:id="@+id/tvSaldo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rp. 345.000"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:layout_toRightOf="@+id/ivSaldo"
+                android:textColor="@color/black_txt_color"
+                android:fontFamily="sans-serif"/>
+
+            <TextView
+                android:id="@+id/tvTopUp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TOP UP"
+                android:layout_gravity="center"
+                android:layout_marginLeft="8dp"
+                android:textStyle="bold"
+                android:textSize="18sp"
+                android:textColor="@color/pink_700"
+                android:fontFamily="sans-serif"
+                android:layout_alignParentRight="true"/>
+        </RelativeLayout>
+
+        <com.smarteist.autoimageslider.SliderLayout
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/imageSlider"
+            android:background="@drawable/custom_iklan" />
+
+        <TextView
+            android:id="@+id/tvLihatSemua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="LIHAT SEMUA"
+            android:gravity="end"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="10dp"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_gor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:paddingBottom="10dp" />
+
+        <TextView
+            android:id="@+id/tvMenuPengelola"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MENU"
+            android:layout_marginLeft="12dp"
+            android:layout_marginBottom="3dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:visibility="gone"/>
+
+        <LinearLayout
+            android:id="@+id/ll_menu_pengelola"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="8dp"
+            android:weightSum="3"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:id="@+id/ll_data_gor"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical"
+                >
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_lihat_gor" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Data Gor"
+                    android:textColor="@color/black_txt_color"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_data_lapangan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_tambah_lapangan" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Data Lapangan"
+                    android:textColor="@color/black_txt_color"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_data_jadwal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/ic_tambah_jadwal" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Data Jadwal"
+                    android:textColor="@color/black_txt_color"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView >
