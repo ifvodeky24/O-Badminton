@@ -59,51 +59,65 @@ public class GorAdapter extends RecyclerView.Adapter<GorAdapter.ViewHolder> {
 
         if (gors.get(viewHolder.getAdapterPosition()).getStatus().equals("Tersedia")) {
             viewHolder.rrv_full.setVisibility(View.GONE);
-
-            ApiInterface apiInterface;
-
-            apiInterface = ApiClient.getClient().create(ApiInterface.class);
-
-            apiInterface.jadwalByIdGor(String.valueOf(gors.get(viewHolder.getAdapterPosition()).getIdGor())).enqueue(new Callback<JadwalResponse>() {
-                @Override
-                public void onResponse(Call<JadwalResponse> call, Response<JadwalResponse> response) {
-                    if (response.isSuccessful()) {
-
-                        if (response.body() != null && response.body().getMaster().size() > 0) {
-
-                            viewHolder.ll_jadwal.removeAllViews();
-
-                            for (int i = 0; i < response.body().getMaster().size(); i++) {
-                                LayoutInflater inflater = LayoutInflater.from(context);
-                                View view = inflater.inflate(R.layout.item_jadwal_tersedia, null, true);
-
-                                ArrayList<Jadwal> jadwalArrayList = new ArrayList<>();
-
-                                TextView tv_tanggal = view.findViewById(R.id.tv_tanggal);
-                                String id_jadwal = response.body().getMaster().get(i).getIdJadwal();
-                                System.out.println("id_jadwal " + id_jadwal);
-                                jadwalArrayList.add(response.body().getMaster().get(i));
-                                System.out.println("cek jadwalArrayList " + jadwalArrayList);
-
-                                String jadwal = "Hari: " + response.body().getMaster().get(i).getHari() + " " + response.body().getMaster().get(i).getJam() + " WIB No Lap: " + response.body().getMaster().get(i).getNomorLapangan();
-
-                                tv_tanggal.setText(jadwal);
-
-                                viewHolder.ll_jadwal.addView(view);
-                            }
-                        }
-
-                    }
-                }
-
-                @Override
-                public void onFailure(Call<JadwalResponse> call, Throwable t) {
-                    t.printStackTrace();
-                }
-            });
         } else {
             viewHolder.rrv_full.setVisibility(View.VISIBLE);
         }
+
+        ApiInterface apiInterface;
+
+        apiInterface = ApiClient.getClient().create(ApiInterface.class);
+
+        apiInterface.jadwalByIdGor(String.valueOf(gors.get(viewHolder.getAdapterPosition()).getIdGor())).enqueue(new Callback<JadwalResponse>() {
+            @Override
+            public void onResponse(Call<JadwalResponse> call, Response<JadwalResponse> response) {
+                if (response.isSuccessful()) {
+
+                    if (response.body() != null && response.body().getMaster().size() > 0) {
+
+                        viewHolder.ll_jadwal.removeAllViews();
+
+                        for (int i = 0; i < response.body().getMaster().size(); i++) {
+                            LayoutInflater inflater = LayoutInflater.from(context);
+                            View view = inflater.inflate(R.layout.item_jadwal_tersedia, null, true);
+
+                            ArrayList<Jadwal> jadwalArrayList = new ArrayList<>();
+
+                            TextView tv_tanggal = view.findViewById(R.id.tv_tanggal);
+                            TextView tv_status_tersedia = view.findViewById(R.id.tv_status_tersedia);
+                            TextView tv_status_booking = view.findViewById(R.id.tv_status_booking);
+                            String id_jadwal = response.body().getMaster().get(i).getIdJadwal();
+                            String status = response.body().getMaster().get(i).getStatusJadwal();
+                            System.out.println("id_jadwal " + id_jadwal);
+                            jadwalArrayList.add(response.body().getMaster().get(i));
+                            System.out.println("cek jadwalArrayList " + jadwalArrayList);
+                            System.out.println("cek statussssssssss " + status);
+
+                            if (response.body().getMaster().get(i).getStatusJadwal().equals("Tersedia")) {
+                                tv_status_booking.setVisibility(View.GONE);
+                                tv_status_tersedia.setVisibility(View.VISIBLE);
+                                tv_status_tersedia.setText(response.body().getMaster().get(i).getStatusJadwal());
+                            } else if (response.body().getMaster().get(i).getStatusJadwal().equals("Booking")) {
+                                tv_status_booking.setVisibility(View.VISIBLE);
+                                tv_status_tersedia.setVisibility(View.GONE);
+                                tv_status_booking.setText(response.body().getMaster().get(i).getStatusJadwal());
+                            }
+
+                            String jadwal = "Hari: " + response.body().getMaster().get(i).getHari() + " " + response.body().getMaster().get(i).getJam() + " WIB No Lap: " + response.body().getMaster().get(i).getNomorLapangan();
+
+                            tv_tanggal.setText(jadwal);
+
+                            viewHolder.ll_jadwal.addView(view);
+                        }
+                    }
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<JadwalResponse> call, Throwable t) {
+                t.printStackTrace();
+            }
+        });
 
         viewHolder.iv_gor.setOnClickListener(view -> {
             if (gors.get(viewHolder.getAdapterPosition()).getStatus().equals("Tersedia")) {

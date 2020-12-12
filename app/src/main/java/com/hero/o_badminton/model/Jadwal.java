@@ -17,21 +17,83 @@ public class Jadwal implements Parcelable {
     @SerializedName("hari")
     @Expose
     private String hari;
+    @SerializedName("status_jadwal")
+    @Expose
+    private String statusJadwal;
     @SerializedName("jam")
     @Expose
     private String jam;
-    @SerializedName("status")
-    @Expose
-    private String status;
-    @SerializedName("createdAt")
-    @Expose
-    private String createdAt;
-    @SerializedName("updatedAt")
-    @Expose
-    private String updatedAt;
-    @SerializedName("id_gor")
-    @Expose
-    private String idGor;
+
+    protected Jadwal(Parcel in) {
+        idJadwal = in.readString();
+        idLapangan = in.readString();
+        hari = in.readString();
+        statusJadwal = in.readString();
+        jam = in.readString();
+        namaGor = in.readString();
+        alamatGor = in.readString();
+        longitude = in.readString();
+        latitude = in.readString();
+        deskripsi = in.readString();
+        jumlahLapangan = in.readString();
+        foto = in.readString();
+        fasilitas = in.readString();
+        statusGor = in.readString();
+        idPengelola = in.readString();
+        idGor = in.readString();
+        nomorLapangan = in.readString();
+        harga = in.readString();
+        jenis = in.readString();
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(idJadwal);
+        dest.writeString(idLapangan);
+        dest.writeString(hari);
+        dest.writeString(statusJadwal);
+        dest.writeString(jam);
+        dest.writeString(namaGor);
+        dest.writeString(alamatGor);
+        dest.writeString(longitude);
+        dest.writeString(latitude);
+        dest.writeString(deskripsi);
+        dest.writeString(jumlahLapangan);
+        dest.writeString(foto);
+        dest.writeString(fasilitas);
+        dest.writeString(statusGor);
+        dest.writeString(idPengelola);
+        dest.writeString(idGor);
+        dest.writeString(nomorLapangan);
+        dest.writeString(harga);
+        dest.writeString(jenis);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public static final Creator<Jadwal> CREATOR = new Creator<Jadwal>() {
+        @Override
+        public Jadwal createFromParcel(Parcel in) {
+            return new Jadwal(in);
+        }
+
+        @Override
+        public Jadwal[] newArray(int size) {
+            return new Jadwal[size];
+        }
+    };
+
+    public String getJam() {
+        return jam;
+    }
+
+    public void setJam(String jam) {
+        this.jam = jam;
+    }
+
     @SerializedName("nama_gor")
     @Expose
     private String namaGor;
@@ -56,9 +118,15 @@ public class Jadwal implements Parcelable {
     @SerializedName("fasilitas")
     @Expose
     private String fasilitas;
+    @SerializedName("status_gor")
+    @Expose
+    private String statusGor;
     @SerializedName("id_pengelola")
     @Expose
     private String idPengelola;
+    @SerializedName("id_gor")
+    @Expose
+    private String idGor;
     @SerializedName("nomor_lapangan")
     @Expose
     private String nomorLapangan;
@@ -69,40 +137,9 @@ public class Jadwal implements Parcelable {
     @Expose
     private String jenis;
 
-    protected Jadwal(Parcel in) {
-        idJadwal = in.readString();
-        idLapangan = in.readString();
-        hari = in.readString();
-        jam = in.readString();
-        status = in.readString();
-        createdAt = in.readString();
-        updatedAt = in.readString();
-        idGor = in.readString();
-        namaGor = in.readString();
-        alamatGor = in.readString();
-        longitude = in.readString();
-        latitude = in.readString();
-        deskripsi = in.readString();
-        jumlahLapangan = in.readString();
-        foto = in.readString();
-        fasilitas = in.readString();
-        idPengelola = in.readString();
-        nomorLapangan = in.readString();
-        harga = in.readString();
-        jenis = in.readString();
+    public static Creator<Jadwal> getCREATOR() {
+        return CREATOR;
     }
-
-    public static final Creator<Jadwal> CREATOR = new Creator<Jadwal>() {
-        @Override
-        public Jadwal createFromParcel(Parcel in) {
-            return new Jadwal(in);
-        }
-
-        @Override
-        public Jadwal[] newArray(int size) {
-            return new Jadwal[size];
-        }
-    };
 
     public String getIdJadwal() {
         return idJadwal;
@@ -128,44 +165,12 @@ public class Jadwal implements Parcelable {
         this.hari = hari;
     }
 
-    public String getJam() {
-        return jam;
+    public String getStatusJadwal() {
+        return statusJadwal;
     }
 
-    public void setJam(String jam) {
-        this.jam = jam;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public String getIdGor() {
-        return idGor;
-    }
-
-    public void setIdGor(String idGor) {
-        this.idGor = idGor;
+    public void setStatusJadwal(String statusJadwal) {
+        this.statusJadwal = statusJadwal;
     }
 
     public String getNamaGor() {
@@ -232,12 +237,28 @@ public class Jadwal implements Parcelable {
         this.fasilitas = fasilitas;
     }
 
+    public String getStatusGor() {
+        return statusGor;
+    }
+
+    public void setStatusGor(String statusGor) {
+        this.statusGor = statusGor;
+    }
+
     public String getIdPengelola() {
         return idPengelola;
     }
 
     public void setIdPengelola(String idPengelola) {
         this.idPengelola = idPengelola;
+    }
+
+    public String getIdGor() {
+        return idGor;
+    }
+
+    public void setIdGor(String idGor) {
+        this.idGor = idGor;
     }
 
     public String getNomorLapangan() {
@@ -264,32 +285,4 @@ public class Jadwal implements Parcelable {
         this.jenis = jenis;
     }
 
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(idJadwal);
-        dest.writeString(idLapangan);
-        dest.writeString(hari);
-        dest.writeString(jam);
-        dest.writeString(status);
-        dest.writeString(createdAt);
-        dest.writeString(updatedAt);
-        dest.writeString(idGor);
-        dest.writeString(namaGor);
-        dest.writeString(alamatGor);
-        dest.writeString(longitude);
-        dest.writeString(latitude);
-        dest.writeString(deskripsi);
-        dest.writeString(jumlahLapangan);
-        dest.writeString(foto);
-        dest.writeString(fasilitas);
-        dest.writeString(idPengelola);
-        dest.writeString(nomorLapangan);
-        dest.writeString(harga);
-        dest.writeString(jenis);
-    }
 }

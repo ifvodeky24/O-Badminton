@@ -2,7 +2,7 @@ package com.hero.o_badminton.config;
 
 public class ServerConfig {
 //    public static final String ENDPOINT = "http://192.168.43.133";  //wifi hp
-    public static final String ENDPOINT = "http://192.168.0.105";  //wifi kos
+    public static final String ENDPOINT = "http://192.168.0.100";  //wifi kos
     //    public static final String ENDPOINT = "http://192.168.1.14";  //wifi galaxy bangau
 //    public static final String ENDPOINT = "http://192.168.100.248";  //wifi rumah
 //    private static final String ENDPOINT = "http://192.168.100.21";
